@@ -1,0 +1,286 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>What's cool in the new and updated OSGi specs</title>
+    
+    <meta name="description" content="What's cool in the new and updated OSGi specs." />
+    <meta name="author" content="Carsten Ziegeler" />
+    <meta name="author" content="David Bosschaert" />
+
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:500' rel='stylesheet' type='text/css'>
+
+    <link href="eclipsecon.css" rel="stylesheet" />
+    <link href="google-code-prettify/prettify.css" type="text/css" rel="stylesheet"/>
+    <script src="google-code-prettify/prettify.js" type="text/javascript"></script>
+    
+    <link rel="shortcut icon" href="favicon.png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+</head>
+
+<body class="impress-not-supported" onload="prettyPrint();">
+
+<div class="fallback-message">
+    <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+    <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+</div>
+
+<div id="impress">
+
+    <div id="title" class="step" data-x="0" data-y="0" data-scale="4">
+        <span class="try">What's cool in the new and updated</span>
+        <h1>OSGi&nbsp;specs</h1>
+        <span class="footnote">Carsten Ziegeler<br/></span>
+        <span class="footnote">David Bosschaert</span>
+    </div>
+
+    <div id="agenda" class="step" data-x="850" data-y="3000" data-rotate="90" data-scale="5">
+        <h1>Agenda</h1>
+        <ul>
+            <li>⦿ Declarative Services</li>
+            <li>⦿ Http Service</li>
+            <li>⦿ Cloud</li>
+            <li>⦿ OSGi/CDI integration</li>
+            <li>⦿ Repository update</li>
+            <li>⦿ Other spec updates</li>
+        </ul>
+    </div>
+
+    <div id="DS" class="step" data-x="3500" data-y="-3000" data-rotate="180" data-scale="6">
+        <p>DS etc...</p> <p><b>...</b></p> <p><span class="thoughts">more ...</span></p>
+    </div>
+
+    <div id="HttpService" class="step" data-x="1500" data-y="-3000" data-rotate="180" data-scale="1">
+        <p>HTTP Service updates</p>
+    </div>
+    <div id="Cloud" class="step" data-x="3500" data-y="2500" data-scale="1">
+        <p><b class="positioning">Cloud</b></p>
+    </div>
+
+    <div id="OSGi.cloud.pict" class="step" data-x="5500" data-y="2500" data-rotate="90" data-scale="2">
+        <img src="CloudECE2013.png"/>
+    </div>
+    <div id="OSGi-cloud" class="step" data-x="5500" data-y="4500" data-rotate="90" data-scale="2">
+        <h1>An OSGi cloud system...</h1>
+        <ul>
+            <li>⦿ Many frameworks</li>
+            <li>⦿ Together providing a logical function</li>
+            <li>⦿ Not a bunch of replicas</li>
+            <ul>
+                <li><small>&nbsp;&nbsp;&nbsp;&nbsp;○ rather a collection of different nodes</small></li>
+                <li><small>&nbsp;&nbsp;&nbsp;&nbsp;○ with different roles working together</small></li>
+            </ul>
+            <li>⦿ Load varies over time</li>
+            <li>⦿ ... and so does your cloud system</li>
+            <ul>
+                <li>&nbsp;&nbsp;&nbsp;&nbsp;○ topology</li>
+                <li>&nbsp;&nbsp;&nbsp;&nbsp;○ configuration</li>
+                <li>&nbsp;&nbsp;&nbsp;&nbsp;○ number of nodes</li>
+            </ul>
+        </ul>
+    </div>
+
+    <div id="cloud-torealize" class="step" data-x="5500" data-y="7500" data-rotate="90" data-scale="4">
+        <h1>To realize this you need...</h1>
+        <ul>
+            <li>⦿ Information!</li>
+            <ul>
+                <li><small>&nbsp;&nbsp;&nbsp;&nbsp;○ need to know what nodes are available</small></li>
+                <li><small>&nbsp;&nbsp;&nbsp;&nbsp;○ ability to react to changes</small></li>
+            </ul>
+            <li>⦿ Provisioning capability</li>
+            <li>⦿ Remote invocation</li>
+            <ul>
+                <li><small>&nbsp;&nbsp;&nbsp;&nbsp;○ to get nodes to communicate</small></li>
+                <li><small>&nbsp;&nbsp;&nbsp;&nbsp;○ either directly or as a means to set up communication channels</small></li>
+            </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div id="rfc183" class="step" data-x="5500" data-y="10500" data-rotate="90" data-scale="2">
+        <h1>RFC 183 - Cloud Ecosystems</h1>
+        <p><b><code>FrameworkNodeStatus</code></b> service: information
+about OSGi framework on Cloud nodes.</p>
+        <ul>
+            <li>Hostname/IP address</li>
+            <li>Location (country etc)</li>
+            <li>OSGi and Java version running</li>
+            <li>A REST management URL</li>
+        </ul>
+        <br/>
+        <ul>
+            <li>Runtime metadata</li>
+            <ul>
+                <li>Available memory / disk space</li>
+                <li>Load measurement</li>
+            </ul>
+        </ul>
+        <p><small><em>... you can add custom metadata too ...</em></small></p>
+    </div>
+
+    <div id="rfc183-1" class="step" data-x="3500" data-y="10500" data-rotate="90" data-scale="1">
+        <figure>
+            <img src="rfc183props.png"/>
+            <figcaption><small><code>FrameworkNodeStatus</code> service properties</small></figcaption>
+        </figure>
+    </div>
+
+    <div id="rfc182" class="step" data-x="5500" data-y="12500" data-rotate="90" data-scale="2">
+        <h1>RFC 182 - REST API</h1>
+        <p>A cloud-friendly remote management API
+        <ul>
+            <li>works great with <code>FrameworkNodeStatus</code></li>
+        </ul>
+        <br/>
+        <p>Example:</p>
+<pre class="prettyprint">addingService(ServiceReference&lt;FrameworkNodeStatus&gt; ref) {
+  // A new Node became available
+  String url = ref.getProperty("org.osgi.node.rest.url");
+  RestClient rc = new RestClient(new URI(url));
+
+  // Provision the new node
+  rc.installBundle(...);
+  rc.startBundle(...);
+}</pre>
+    </div>
+
+    <div id="rfc183-2" class="step" data-x="5500" data-y="14500" data-rotate="90" data-scale="2">
+        <h1>Additional ideas in RFC 183</h1>
+        <ul>
+            <li>⦿ Ability to intercept remote service calls</li>
+            <ul>
+                <li>・ can provide different service for each client</li>
+                <li>・ can do invocation counting (quotas, billing)</li>
+            </ul>
+        </ul>
+
+        <br/>
+        <ul>
+            <li>⦿ Providing remote services meta-data</li>
+            <ul>
+                <li>・ quota exceeded</li>
+                <li>・ payment needed</li>
+                <li>・ maintenance scheduled</li>
+            </ul>
+        </ul>
+    </div>
+
+    <div id="rfc183-3" class="step" data-x="5500" data-y="16500" data-rotate="90" data-scale="2">
+        <h1>Current OSGi cloud work</h1>
+        <p>Provides a base line</p>
+        <ul>
+            <li>&nbsp;&nbsp;&nbsp;&nbsp;○ to build fluid cloud systems<li>
+            <li>&nbsp;&nbsp;&nbsp;&nbsp;○ <em>portability</em> across clouds<li>
+        </ul>
+        <br/>
+        <p>Where everything is dynamic</p>
+        <ul>
+            <li>&nbsp;&nbsp;&nbsp;&nbsp;○ nodes can be repurposed<li>
+        </ul>
+        <br/>
+        <p style="padding-left: 40px;"><em>... and you deal with your cloud nodes through OSGi services</em></p>
+    </div>
+
+    <div id="cdi" class="step" data-x="5500" data-y="0" data-scale="1">
+        <p><b class="positioning">OSGi/CDI integration</b></p>
+    </div>
+    
+    <div id="rfc193" class="step" data-x="7500" data-y="0" data-scale="2">
+        <h1>RFC 193 - OSGi/CDI integration</h1>
+    </div>
+
+    <div id="repo" class="step" data-x="7500" data-y="2500" data-rotate="45" data-scale="1">
+        <p><b class="positioning">Repository 1.1</b></p>
+    </div>
+
+    <div id="repo1" class="step" data-x="9500" data-y="4500" data-rotate="45" data-scale="2">
+        <figure>
+            <img src="repo1.png"/>
+            <figcaption>OSGi Repository today</figcaption>
+        </figure>
+    </div>
+
+    <div id="repo2" class="step" data-x="11500" data-y="6500" data-rotate="45" data-scale="2">
+        <figure>
+            <img src="repo2.png"/>
+            <figcaption>Example Repository namespaces</figcaption>
+        </figure>
+    </div>
+
+    <div id="rfc187" class="step" data-x="13500" data-y="8500" data-rotate="45" data-scale="2">
+        <h1>RFC 187 - Repository 1.1</h1>
+        <p>Existing repository powerful</p>
+        <p>&nbsp;&nbsp;&nbsp;but: <small><em>limited to queries in a single namespace</em></small></p><br/>
+        <p>New in RFC 187:</p>
+        <ul>
+            <li>Combine requirements spanning multiple namespaces:</li>
+        </ul>
+        <pre class="prettyprint">Repository repo = ... // Obtain from Service Registry
+  Collection&lt;Resource&gt; res = repo.findProviders(
+    repo.getExpressionCombiner().and(
+      repo.newRequirementBuilder("osgi.wiring.package").
+        addDirective("filter","(osgi.wiring.package=foo.pkg1)").
+          buildExpression(),
+      repo.newRequirementBuilder("osgi.identity").
+        addDirective("filter",
+          "(license=http://opensource.org/licenses/Apache-2.0)").
+          buildExpression()));</pre>
+    </div>
+
+    <div id="ent" class="step" data-x="1500" data-y="5700" data-scale="1">
+        <p><b class="positioning">Other Enterprise Spec updates</b></p>
+    </div>
+
+    <div id="ent-2" class="step" data-x="1500" data-y="7700" data-scale="2">
+        <ul>
+            <li>▻ Blueprint 1.1</li>
+            <li>▻ Remote Service Admin 1.1</li>
+            <li>▻ Subsystems 1.1</li>
+        </ul>
+    </div>
+
+    <div id="when" class="step" data-x="-3000" data-y="0" data-scale="1">
+        <h1>When can I get it?</h1>
+        <p>RFCs available to everyone today: <a href="https://github.com/osgi/design">https://github.com/osgi/design</a></p>
+        <br/>
+        <ul><small>
+            <li>◎ Most work aimed at Core/Enterprise R6 (2014)</li>
+            <li>◎ Some specs in Enterprise R7 (2015)</li>
+            </small>
+        </ul>
+
+    </div>
+
+    <div id="questions" class="step" data-x="-1500" data-y="4500" data-rotate="270" data-z="-3000">
+        <p><b>Questions?</b></p>
+    </div>
+
+    <div id="overview" class="step" data-x="3000" data-y="1500" data-scale="20">
+    </div>
+</div>
+
+<div class="hint">
+    <p>Use a spacebar or arrow keys to navigate</p>
+</div>
+<script>
+if ("ontouchstart" in document.documentElement) { 
+    document.querySelector(".hint").innerHTML = "<p>Tap on the left or right to navigate</p>";
+}
+</script>
+<script src="js/impress.js"></script>
+<script>
+    
+  // To create a printable page, just add ?print to the URL
+  if ( !window.location.search.match(/print/) ) {
+    impress().init();
+  }
+</script>
+
+</body>
+</html>
+

@@ -61,18 +61,29 @@
         <p><b class="positioning">Cloud</b></p>
     </div>
 
-    <div id="OSGi.cloud.pict" class="step" data-x="5500" data-y="2500" data-rotate="90" data-scale="2">
-        <img src="CloudECE2013.png"/>
+    <div id="paas-traditional" class="step" data-x="5500" data-y="2500" data-rotate="90" data-scale="1">
+        <figure>
+            <img src="paas1.png"/>
+            <figcaption>Current PaaS offerings...</figcaption>
+        </figure>
     </div>
-    <div id="OSGi-cloud" class="step" data-x="5500" data-y="4500" data-rotate="90" data-scale="2">
+
+    <div id="paas-osgi" class="step" data-x="5500" data-y="4500" data-rotate="90" data-scale="2">
+        <figure>
+            <img src="paas2.png"/>
+            <figcaption>OSGi PaaS</figcaption>
+        </figure>
+    </div>
+
+    <div id="OSGi-cloud" class="step" data-x="5500" data-y="6500" data-rotate="90" data-scale="2">
         <h1>An OSGi cloud system...</h1>
         <ul>
             <li>⦿ Many frameworks</li>
             <li>⦿ Together providing a logical function</li>
             <li>⦿ Not a bunch of replicas</li>
             <ul>
-                <li><small>&nbsp;&nbsp;&nbsp;&nbsp;○ rather a collection of different nodes</small></li>
-                <li><small>&nbsp;&nbsp;&nbsp;&nbsp;○ with different roles working together</small></li>
+                <li>&nbsp;&nbsp;&nbsp;&nbsp;○ rather a collection of different nodes</li>
+                <li>&nbsp;&nbsp;&nbsp;&nbsp;○ with different roles working together</li>
             </ul>
             <li>⦿ Load varies over time</li>
             <li>⦿ ... and so does your cloud system</li>
@@ -84,28 +95,29 @@
         </ul>
     </div>
 
-    <div id="cloud-torealize" class="step" data-x="5500" data-y="7500" data-rotate="90" data-scale="4">
+    <div id="cloud-torealize" class="step" data-x="5500" data-y="9500" data-rotate="90" data-scale="4">
         <h1>To realize this you need...</h1>
         <ul>
             <li>⦿ Information!</li>
             <ul>
-                <li><small>&nbsp;&nbsp;&nbsp;&nbsp;○ need to know what nodes are available</small></li>
-                <li><small>&nbsp;&nbsp;&nbsp;&nbsp;○ ability to react to changes</small></li>
+                <li>&nbsp;&nbsp;&nbsp;&nbsp;○ need to know what nodes are available</li>
+                <li>&nbsp;&nbsp;&nbsp;&nbsp;○ ability to react to changes</li>
             </ul>
             <li>⦿ Provisioning capability</li>
             <li>⦿ Remote invocation</li>
             <ul>
-                <li><small>&nbsp;&nbsp;&nbsp;&nbsp;○ to get nodes to communicate</small></li>
-                <li><small>&nbsp;&nbsp;&nbsp;&nbsp;○ either directly or as a means to set up communication channels</small></li>
+                <li>&nbsp;&nbsp;&nbsp;&nbsp;○ inside your cloud system</li>
+                <li>&nbsp;&nbsp;&nbsp;&nbsp;○ to get nodes to communicate</li>
+                <li>&nbsp;&nbsp;&nbsp;&nbsp;○ either directly or as a means to set up communication channels</li>
             </ul>
             </li>
         </ul>
     </div>
 
-    <div id="rfc183" class="step" data-x="5500" data-y="10500" data-rotate="90" data-scale="2">
+    <div id="rfc183" class="step" data-x="5500" data-y="12500" data-rotate="90" data-scale="2">
         <h1>RFC 183 - Cloud Ecosystems</h1>
         <p><b><code>FrameworkNodeStatus</code></b> service: information
-about OSGi framework on Cloud nodes.</p>
+about Cloud nodes.</p>
         <ul>
             <li>Hostname/IP address</li>
             <li>Location (country etc)</li>
@@ -123,14 +135,14 @@ about OSGi framework on Cloud nodes.</p>
         <p><small><em>... you can add custom metadata too ...</em></small></p>
     </div>
 
-    <div id="rfc183-1" class="step" data-x="3500" data-y="10500" data-rotate="90" data-scale="1">
+    <div id="rfc183-1" class="step" data-x="3500" data-y="12500" data-rotate="90" data-scale="1">
         <figure>
             <img src="rfc183props.png"/>
             <figcaption><small><code>FrameworkNodeStatus</code> service properties</small></figcaption>
         </figure>
     </div>
 
-    <div id="rfc182" class="step" data-x="5500" data-y="12500" data-rotate="90" data-scale="2">
+    <div id="rfc182" class="step" data-x="5500" data-y="14500" data-rotate="90" data-scale="2">
         <h1>RFC 182 - REST API</h1>
         <p>A cloud-friendly remote management API
         <ul>
@@ -149,8 +161,18 @@ about OSGi framework on Cloud nodes.</p>
 }</pre>
     </div>
 
-    <div id="rfc183-2" class="step" data-x="5500" data-y="14500" data-rotate="90" data-scale="2">
+    <div id="rfc183-2" class="step" data-x="5500" data-y="16500" data-rotate="90" data-scale="2">
         <h1>Additional ideas in RFC 183</h1>
+        <ul>
+            <li>⦿ Cloud-specific configuration type</li>
+            <ul>
+                <li>・ <code>osgi.configtype.ecosystem</code></li>
+                <li>・ defines supported Remote Service data types</li>
+                <li>・ not visible outside of cloud system</li>
+            </ul>
+        </ul>
+
+        <br/>
         <ul>
             <li>⦿ Ability to intercept remote service calls</li>
             <ul>
@@ -170,7 +192,7 @@ about OSGi framework on Cloud nodes.</p>
         </ul>
     </div>
 
-    <div id="rfc183-3" class="step" data-x="5500" data-y="16500" data-rotate="90" data-scale="2">
+    <div id="rfc183-3" class="step" data-x="5500" data-y="18500" data-rotate="90" data-scale="2">
         <h1>Current OSGi cloud work</h1>
         <p>Provides a base line</p>
         <ul>

@@ -219,9 +219,31 @@ about Cloud nodes.</p>
             <li>● Publishing CDI beans as OSGi services</li>
             <li>● Injecting OSGi services in CDI beans</li>
             <ul>
-                <li>CDI = Context and dependency injection</li>
+                <li>CDI = Contexts and dependency injection</li>
             </ul>
         </ul>
+    </div>
+
+    <div id="rfc193-2" class="step" data-x="9500" data-y="0" data-scale="2">
+        <h1>RFC 193 - Examples</h1>
+        <ul>
+            <li>● Publishing CDI bean as OSGi service</li>
+        </ul>
+        <pre class="prettyprint">@Component
+public class MyComponent implements MyInterface { ... }</pre><br/>
+        <ul>
+            <li>● Dependency Injection</li>
+        </ul>
+        <pre class="prettyprint">@Inject
+private MyInterface beanA;
+
+@Inject
+@Service
+private MyInterface serviceB;
+
+@Inject
+@Service(optional = true)
+private MyInterface serviceC;</pre>
     </div>
 
     <div id="repo" class="step" data-x="7500" data-y="2500" data-rotate="45" data-scale="1">

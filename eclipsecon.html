@@ -62,19 +62,102 @@
     </div>
 
     <div id="FW-Scopes-2" class="step" data-x="3500" data-y="-5000" data-rotate="180" data-scale="2">
-        <figure>
-            <img src="scopes1.png"/>
-            <figcaption><small><code>PrototypeServiceFactory</code></small></figcaption>
-        </figure>
+        <h1>PrototypeServiceFactory</h1>
+        <pre>
+public interface PrototypeServiceFactory&lt;S&gt; extends ServiceFactory&lt;S&gt; {
+
+    S getService(Bundle bundle, 
+                 ServiceRegistration&lt;S> registration);
+
+    void ungetService(Bundle bundle, 
+                      ServiceRegistration&lt;S&gt; registration, 
+                      S service);
+}
+        </pre>
     </div>
 
-    <div id="DS" class="step" data-x="3500" data-y="-7000" data-rotate="180" data-scale="6">
-        <p>DS etc...</p> <p><b>...</b></p> <p><span class="thoughts">more ...</span></p>
+    <div id="FW-Scopes-3" class="step" data-x="3500" data-y="-7000" data-rotate="180" data-scale="2">
+        <h1>New method in BundleContext:</h1>
+        <pre>
+public interface BundleContext {
+
+    &lt;S> ServiceObjects&lt;S&gt; getServiceObjects(ServiceReference&lt;S&gt; ref);
+}  
+        </pre>
+        <h1>New Interface ServiceObjects:</h1>
+        <pre>
+public interface ServiceObjects&lt;S&gt; {
+
+    S getService();
+    
+    void ungetService(S service);
+} 
+        </pre>
+    </div>
+
+    <div id="FW-Annotations" class="step" data-x="3500" data-y="-9000" data-rotate="180" data-scale="2">
+        <h1>RFC 197 – OSGi Type and Package Annotations</h1>
+        <ul>
+			<li>⦿ Annotations for documenting semantic versioning information</li>
+			<ul><li>⦿ Class retention annotations</li></ul>
+			<li>⦿ @Version</li>
+			<li>⦿ @ProviderType</li>
+			<li>⦿ @ConsumerType</li>
+		</ul>
+    </div>
+
+    <div id="FW-DTO" class="step" data-x="3500" data-y="-11000" data-rotate="180" data-scale="2">
+        <h1>RFC 185 – Data Transfer Objects</h1>
+        <ul>
+			<li>⦿ Defines a DTO model for OSGi</li>
+			<ul><li>⦿ Serializable/Deserializable objects</li></ul>
+			<li>⦿ To be adopted by other specs</li>
+			<li>⦿ Use cases: REST, JMX, Web Console...</li>
+		</ul>
+    </div>
+
+    <div id="FW-DTO-2" class="step" data-x="3500" data-y="-13000" data-rotate="180" data-scale="2">
+        <h1>RFC 185 – Data Transfer Objects</h1>
+        <ul>
+			<li>Getting DTOs: adapter pattern</li>
+		</ul>
+		<pre>
+public class BundleDTO extends org.osgi.dto.DTO {
+
+    public long id;
+    
+    public long lastModified;
+    
+    public int state;
+    
+    public String symbolicName;
+    
+    public String version;
+}
+		</pre>
+    </div>
+
+    <div id="FW-DTO-2" class="step" data-x="3500" data-y="-15000" data-rotate="180" data-scale="2">
+        <h1>RFC 185 – Data Transfer Objects</h1>
+        <ul>
+			<li>DTOs for the OSGi framework</li>
+			<li>⦿ FrameworkDTO</li>
+			<li>⦿ BundleDTO</li>
+			<li>⦿ ServiceReferenceDTO</li>
+			<li>⦿ BundleStartLevelDTO, FrameworkStartLevelDTO</li>
+			<li>⦿ CapabilityDTO, RequirementDTO, ResourceDTO, WiringDTO, WireDTO</li>
+		</ul>
+    </div>
+
+    <div id="DS" class="step" data-x="3500" data-y="-20000" data-rotate="180" data-scale="6">
+        <p>DS - new annotation based support!</p> <p><b>...</b></p> <p><span class="thoughts">more ...</span></p>
     </div>
 
     <div id="HttpService" class="step" data-x="1500" data-y="-3000" data-rotate="180" data-scale="1">
         <p>HTTP Service updates</p>
+        <p>Whiteboard servlet, filters, listeners...maybe resources</p>
     </div>
+    
     <div id="Cloud" class="step" data-x="3500" data-y="2500" data-scale="1">
         <p><b class="positioning">Cloud</b></p>
     </div>

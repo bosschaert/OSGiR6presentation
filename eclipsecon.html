@@ -149,13 +149,74 @@ public class BundleDTO extends org.osgi.dto.DTO {
 		</ul>
     </div>
 
-    <div id="DS" class="step" data-x="3500" data-y="-20000" data-rotate="180" data-scale="6">
-        <p>DS - new annotation based support!</p> <p><b>...</b></p> <p><span class="thoughts">more ...</span></p>
+    <div id="DS-1" class="step" data-x="5500" data-y="-15000" data-rotate="180" data-scale="6">
+        <h1>Declarative Services Enhancements (RFC 190)</h1>
+        <ul>
+             <li>⦿ Support of service scopes</li>
+             <li>⦿ Diagnostic API</li>
+             <li>⦿ DTOs</li>
+             <li>⦿ But most importantly...</li>
+        </ul>
     </div>
 
-    <div id="HttpService" class="step" data-x="1500" data-y="-3000" data-rotate="180" data-scale="1">
-        <p>HTTP Service updates</p>
-        <p>Whiteboard servlet, filters, listeners...maybe resources</p>
+    <div id="DS-2" class="step" data-x="5500" data-y="-13000" data-rotate="180" data-scale="6">
+        <h1>Describe your component configuration as an annotation:</h1>
+		<pre>
+@interface MyConfig {
+    boolean enabled() default true;
+    String[] topic() default {"topicA", "topicB"};
+    String userName;
+    int service_ranking default 15;
+}
+		</pre>
+    </div>
+
+    <div id="DS-3" class="step" data-x="5500" data-y="-11000" data-rotate="180" data-scale="6">
+        <h1>and use it in the lifecycle methods:</h1>
+		<pre>
+public class MyComponent {
+
+    String userName;
+    
+    String[] topics;
+    
+    @Activate
+    protected void activate(final MyConfig config) {
+         if ( config.enabled() ) {
+            this.userName = config.userName();      
+            this.topics = config.topic();
+         }
+    }
+}
+		</pre>
+    </div>
+
+    <div id="DS-4" class="step" data-x="5500" data-y="-9000" data-rotate="180" data-scale="6">
+        <h1>...or even simpler...:</h1>
+		<pre>
+public class MyComponent {
+
+    @MyConfig configuration;
+    
+    @Activate
+    protected void activate(final MyConfig config) {
+         if ( config.enabled() ) {
+            this.configuration = config;      
+         }
+    }
+}
+		</pre>
+    </div>
+
+    <div id="HttpService" class="step" data-x="1500" data-y="-7000" data-rotate="180" data-scale="1">
+        <h1>Http Service Update (RFC 189)</h1>
+        <ul>
+            <li>⦿ Update to Servlet API 3+</li>
+            <li>⦿ Whiteboard support for</li>
+            <li>⦿ Servlets, Servlet Filters</li>
+            <li>⦿ Listeners and Resources</li>
+            <li>⦿ and DTOs</li>
+        </ul>
     </div>
     
     <div id="Cloud" class="step" data-x="3500" data-y="2500" data-scale="1">

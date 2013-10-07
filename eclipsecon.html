@@ -208,17 +208,62 @@ public class MyComponent {
 		</pre>
     </div>
 
-    <div id="HttpService" class="step" data-x="1500" data-y="-7000" data-rotate="180" data-scale="1">
+    <div id="DS-5" class="step" data-x="5500" data-y="-7000" data-rotate="180" data-scale="6">
+        <h1>Declarative Services Enhancements (RFC 190)</h1>
+        <ul>
+             <li>⦿ Annotation configuration support</li>
+             <li>⦿ Support of service scopes</li>
+             <li>⦿ Diagnostic API</li>
+             <li>⦿ DTOs</li>
+        </ul>
+    </div>
+
+    <div id="HttpService" class="step" data-x="1500" data-y="-5000" data-rotate="180" data-scale="1">
         <h1>Http Service Update (RFC 189)</h1>
         <ul>
             <li>⦿ Update to Servlet API 3+</li>
             <li>⦿ Whiteboard support for</li>
-            <li>⦿ Servlets, Servlet Filters</li>
-            <li>⦿ Listeners and Resources</li>
+            <li>  Servlets, Servlet Filters</li>
+            <li>  Listeners, Resources and HttpContexts</li>
             <li>⦿ and DTOs</li>
         </ul>
     </div>
     
+    <div id="HttpService-2" class="step" data-x="3500" data-y="-5000" data-rotate="180" data-scale="1">
+        <h1>Whiteboard Servlet Registration</h1>
+        <pre>
+@Component(service = javax.servlet.Servlet.class, scope="PROTOTYPE",
+   property={
+     "osgi.http.whiteboard.servlet.pattern=/products/*",
+   })
+public class MyServlet extends HttpServlet {
+   ...
+}        </pre>
+    </div>
+
+    <div id="HttpService-3" class="step" data-x="3500" data-y="-7000" data-rotate="180" data-scale="1">
+        <h1>Whiteboard Servlet Filter Registration</h1>
+        <pre>
+@Component(service = javax.servlet.Filter.class, scope="PROTOTYPE",
+   property={
+     "osgi.http.whiteboard.filter.pattern=/products/*",
+   })
+public class MyFilter implements Filter {
+   ...
+}        </pre>
+    </div>
+
+    <div id="HttpService-4 class="step" data-x="3500" data-y="-9000" data-rotate="180" data-scale="1">
+        <h1>Additional Support</h1>
+        <ul>
+            <li>⦿ Most listener types are supported</li>
+            <li>  Register with their interface</li>
+            <li>⦿ Error Pages and Resources</li>
+            <li>⦿ Shared HttpContexts</li>
+            <li>⦿ Target Http Service</li>
+        </ul>
+    </div>
+
     <div id="Cloud" class="step" data-x="3500" data-y="2500" data-scale="1">
         <p><b class="positioning">Cloud</b></p>
     </div>

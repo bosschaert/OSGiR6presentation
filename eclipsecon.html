@@ -497,18 +497,33 @@ private MyInterface serviceC;</pre>
 
     <div id="rfc180-2" class="step" data-x="11500" data-y="10500" data-rotate="45" data-scale="2">
         <h1>Semantic Versioning...</h1>
-        <p>... is a versioning policy for <b><em>exported packages</em></b></p>
+        <p>... is a versioning policy for <b><em>exported packages</em></b>.</p>
         <p>OSGi versions: <small>&lt;major&gt;.&lt;minor&gt;.&lt;micro&gt;.&lt;qualifier&gt;</small></p>
         <p><br/>Updating package versions:</p>
         <ul>
             <li>● fix/patch (no change to API): </li>
             <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>update micro</b></li>
-            <li>● extend API (no impact on clients):</li>
+            <li>● extend API (affects implementers, not clients):</li>
             <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>update minor</b></li>
             <li>● API breakage:</li>
             <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>update major</b></li>
         </ul>
         <p><b>Note:</b> not always used for <em>bundle</em> versions</p>
+    </div>
+
+    <div id="rfc180-3"class="step" data-x="13500" data-y="12500" data-rotate="45" data-scale="2">
+        <p>Semantic Versioning is great, but...</p>
+        <br/>
+        <ul>
+            <li>- not all projects use it, e.g. APIs from JSRs</li>
+            <li>- e.g. Servlet 3 is backward compatible with 2.5</li>
+            <li>- what's its <code>javax.servlet</code> package version?</li>
+            <ul>
+                <li><code>2.6</code> ?</li>
+                <li>or <code>3.0</code> ?</li>
+            </ul>
+            <li>- different projects made different choices</li>
+        </ul>
     </div>
 
     <div id="ent" class="step" data-x="1500" data-y="5700" data-scale="1">

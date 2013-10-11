@@ -511,7 +511,7 @@ private MyInterface serviceC;</pre>
         <p><b>Note:</b> not always used for <em>bundle</em> versions</p>
     </div>
 
-    <div id="rfc180-3"class="step" data-x="13500" data-y="12500" data-rotate="45" data-scale="2">
+    <div id="rfc180-3" class="step" data-x="13500" data-y="12500" data-rotate="45" data-scale="2">
         <p>Semantic Versioning is great, but...</p>
         <br/>
         <ul>
@@ -524,6 +524,26 @@ private MyInterface serviceC;</pre>
             </ul>
             <li>- different projects made different choices</li>
         </ul>
+    </div>
+
+    <div id="rfc180-4" class="step" data-x="15500" data-y="14500" data-rotate="45" data-scale="2">
+        <h1>RFC 180: Portable Java Contracts</h1>
+        <br/>
+        <p><code>osgi.contract</code> capability to the rescue</p>
+        <ul>
+            <li>● client bundle requires capability</li>
+            <ul><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with 'marketing' or 'spec' version</li>
+            </ul>
+            <li>● and also import the package <em>without</em> version</li>
+            <ul>
+                <li><code>・ osgi.contract</code> provider binds the contract version to package versions
+            </ul>
+        </ul>
+        <br/>
+        <pre class='prettyprint'>Import-Package: javax.servlet, javax.servlet.http
+Require-Capability: osgi.contract;
+  filter:="(&(osgi.contract=JavaServlet)(version=3.0))"</pre>
+        <p><br/>Allows writing <em>portable</em> bundles that import non-semantically versioned packages.</p>
     </div>
 
     <div id="ent" class="step" data-x="1500" data-y="5700" data-scale="1">

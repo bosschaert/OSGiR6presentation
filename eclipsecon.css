@@ -412,6 +412,11 @@ small {
     font-size: 80%;
 }
 
+#rfc180-4 {
+    width: 1200px;
+    font-size: 270%;
+}
+
 #ent { width: 900px }
 
 #ent b {

@@ -311,7 +311,7 @@ small {
 }
 
 #rfc183 {
-    font-size: 250%;
+    font-size: 220%;
 }
 
 #rfc183 ul {
@@ -326,6 +326,10 @@ small {
 #rfc183 ul ul li {
     list-style: disc;
     font-size: 80%;
+}
+
+#rfc183-2 {
+    font-size: 250%;
 }
 
 #cdi { width: 900px }
@@ -418,7 +422,7 @@ small {
 
 #rfc180-4 {
     width: 1200px;
-    font-size: 270%;
+    font-size: 250%;
 }
 
 #ent { width: 900px }

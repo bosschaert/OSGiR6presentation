@@ -289,7 +289,7 @@ small {
 }
 
 #OSGi-cloud ul {
-    font-size: 70%;
+    font-size: 80%;
 }
 
 #OSGi-cloud small {
@@ -297,7 +297,7 @@ small {
 }
 
 #cloud ul {
-    font-size: 70%;
+    font-size: 80%;
 }
 
 #cloud-torealize small {
@@ -316,7 +316,7 @@ small {
 
 #rfc183 li {
     list-style: circle;
-    font-size: 70%;
+    font-size: 80%;
 }
 
 #rfc183 ul ul li {

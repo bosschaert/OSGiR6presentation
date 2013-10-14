@@ -318,7 +318,8 @@ public class MyFilter implements Filter {
             <ul>
                 <li>&nbsp;&nbsp;&nbsp;&nbsp;○ inside your cloud system</li>
                 <li>&nbsp;&nbsp;&nbsp;&nbsp;○ to get nodes to communicate</li>
-                <li>&nbsp;&nbsp;&nbsp;&nbsp;○ either directly or as a means to set up communication channels</li>
+                <li>&nbsp;&nbsp;&nbsp;&nbsp;○ either directly...</li>
+                <li>&nbsp;&nbsp;&nbsp;&nbsp;○ ... or as a means to set up communication channels</li>
             </ul>
             </li>
         </ul>
@@ -326,8 +327,14 @@ public class MyFilter implements Filter {
 
     <div id="rfc183" class="step" data-x="5500" data-y="12500" data-rotate="90" data-scale="2">
         <h1>RFC 183 - Cloud Ecosystems</h1>
-        <p><b><code>FrameworkNodeStatus</code></b> service: information
-about Cloud nodes.</p>
+        <p><b><code>FrameworkNodeStatus</code></b> service: </p>
+        <ul>
+            <li>information about each Cloud node</li>
+            <li>accessible as a Remote Service</li>
+            <li>throughout the ecosystem</li>
+        </ul>
+        <br/>
+        <p>Information such as:</p>
         <ul>
             <li>Hostname/IP address</li>
             <li>Location (country etc)</li>
@@ -537,9 +544,9 @@ private MyInterface serviceC;</pre>
             <li>● client bundle requires capability</li>
             <ul><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with 'marketing' or 'spec' version</li>
             </ul>
-            <li>● and also import the package <em>without</em> version</li>
+            <li>● and also imports the package <em>without</em> version</li>
             <ul>
-                <li><code>・ osgi.contract</code> provider binds the contract version to package versions
+                <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>osgi.contract</code> provider binds the contract version to package versions
             </ul>
         </ul>
         <br/>
@@ -563,13 +570,13 @@ Require-Capability: osgi.contract;
             </ul>
             <li>▻ Remote Service Admin 1.1</li>
             <ul>
-                <li>・ Service modification</li>
+                <li>・ Remote Service registration modification</li>
             </ul>
             <li>▻ Subsystems 1.1</li>
             <ul>
                 <li>・ Provide Deployment Manifest separately</li>
                 <li>・ Config Admin integration</li>
-                <li>・ Many small enhancements™</li>
+                <li>・ Many small enhancements</li>
             </ul>
         </ul>
     </div>

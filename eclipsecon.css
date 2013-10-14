@@ -310,6 +310,10 @@ small {
     line-height: 150px;
 }
 
+#rfc183 {
+    font-size: 250%;
+}
+
 #rfc183 ul {
     padding-left: 100px;
 }
@@ -321,7 +325,7 @@ small {
 
 #rfc183 ul ul li {
     list-style: disc;
-    font-size: 50%;
+    font-size: 80%;
 }
 
 #cdi { width: 900px }

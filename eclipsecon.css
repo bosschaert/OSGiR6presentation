@@ -461,6 +461,10 @@ small {
     cursor: pointer;
 }
 
+.pre { 
+    white-space:pre; 
+}
+
 .hint {
     /*
         We hide the hint until presentation is started and from browsers not supporting

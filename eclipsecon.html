@@ -51,7 +51,7 @@
         </ul>
     </div>
 
-    <div id="FW-Scopes" class="step" data-x="3500" data-y="-3000" data-rotate="180" data-scale="2">
+    <div id="FW-Scopes" class="step" data-x="3000" data-y="-3000" data-rotate="180" data-scale="2">
         <h1>Framework Updates - Service Scopes (RFC 195)</h1>
         <ul>
           <li>⦿ Service Scopes: singleton, bundle, <b>prototype</b></li>
@@ -61,7 +61,7 @@
         </ul>
     </div>
 
-    <div id="FW-Scopes-2" class="step" data-x="3500" data-y="-5000" data-rotate="180" data-scale="2">
+    <div id="FW-Scopes-2" class="step" data-x="3000" data-y="-5000" data-rotate="180" data-scale="2">
         <h1>PrototypeServiceFactory</h1>
         <pre>
 public interface PrototypeServiceFactory&lt;S&gt; extends ServiceFactory&lt;S&gt; {
@@ -76,7 +76,7 @@ public interface PrototypeServiceFactory&lt;S&gt; extends ServiceFactory&lt;S&gt
         </pre>
     </div>
 
-    <div id="FW-Scopes-3" class="step" data-x="3500" data-y="-7000" data-rotate="180" data-scale="2">
+    <div id="FW-Scopes-3" class="step" data-x="3000" data-y="-7000" data-rotate="180" data-scale="2">
         <h1>New method in BundleContext:</h1>
         <pre>
 public interface BundleContext {
@@ -95,7 +95,7 @@ public interface ServiceObjects&lt;S&gt; {
         </pre>
     </div>
 
-    <div id="FW-Annotations" class="step" data-x="3500" data-y="-9000" data-rotate="180" data-scale="2">
+    <div id="FW-Annotations" class="step" data-x="3000" data-y="-9000" data-rotate="180" data-scale="2">
         <h1>RFC 197 – OSGi Type and Package Annotations</h1>
         <ul>
 			<li>⦿ Annotations for documenting semantic versioning information</li>
@@ -106,7 +106,7 @@ public interface ServiceObjects&lt;S&gt; {
 		</ul>
     </div>
 
-    <div id="FW-DTO" class="step" data-x="3500" data-y="-11000" data-rotate="180" data-scale="2">
+    <div id="FW-DTO" class="step" data-x="3000" data-y="-11000" data-rotate="180" data-scale="2">
         <h1>RFC 185 – Data Transfer Objects</h1>
         <ul>
 			<li>⦿ Defines a DTO model for OSGi</li>
@@ -116,7 +116,7 @@ public interface ServiceObjects&lt;S&gt; {
 		</ul>
     </div>
 
-    <div id="FW-DTO-2" class="step" data-x="3500" data-y="-13000" data-rotate="180" data-scale="2">
+    <div id="FW-DTO-2" class="step" data-x="3000" data-y="-13000" data-rotate="180" data-scale="2">
         <h1>RFC 185 – Data Transfer Objects</h1>
         <ul>
 			<li>Getting DTOs: adapter pattern</li>
@@ -137,7 +137,7 @@ public class BundleDTO extends org.osgi.dto.DTO {
 		</pre>
     </div>
 
-    <div id="FW-DTO-2" class="step" data-x="3500" data-y="-15000" data-rotate="180" data-scale="2">
+    <div id="FW-DTO-3" class="step" data-x="3000" data-y="-15000" data-rotate="180" data-scale="2">
         <h1>RFC 185 – Data Transfer Objects</h1>
         <ul>
 			<li>DTOs for the OSGi framework</li>
@@ -149,7 +149,7 @@ public class BundleDTO extends org.osgi.dto.DTO {
 		</ul>
     </div>
 
-    <div id="DS-1" class="step" data-x="5500" data-y="-15000" data-rotate="180" data-scale="6">
+    <div id="DS-1" class="step" data-x="-5500" data-y="-15000" data-rotate="180" data-scale="2">
         <h1>Declarative Services Enhancements (RFC 190)</h1>
         <ul>
              <li>⦿ Support of service scopes</li>
@@ -159,19 +159,19 @@ public class BundleDTO extends org.osgi.dto.DTO {
         </ul>
     </div>
 
-    <div id="DS-2" class="step" data-x="5500" data-y="-13000" data-rotate="180" data-scale="6">
+    <div id="DS-2" class="step" data-x="-5500" data-y="-13000" data-rotate="180" data-scale="2">
         <h1>Describe your component configuration as an annotation:</h1>
 		<pre>
 @interface MyConfig {
     boolean enabled() default true;
     String[] topic() default {"topicA", "topicB"};
-    String userName;
-    int service_ranking default 15;
+    String userName();
+    int service_ranking() default 15;
 }
 		</pre>
     </div>
 
-    <div id="DS-3" class="step" data-x="5500" data-y="-11000" data-rotate="180" data-scale="6">
+    <div id="DS-3" class="step" data-x="-5500" data-y="-11000" data-rotate="180" data-scale="2">
         <h1>and use it in the lifecycle methods:</h1>
 		<pre>
 public class MyComponent {
@@ -183,20 +183,20 @@ public class MyComponent {
     @Activate
     protected void activate(final MyConfig config) {
          if ( config.enabled() ) {
-            this.userName = config.userName();      
-            this.topics = config.topic();
+             this.userName = config.userName();      
+             this.topics = config.topic();
          }
     }
 }
 		</pre>
     </div>
 
-    <div id="DS-4" class="step" data-x="5500" data-y="-9000" data-rotate="180" data-scale="6">
+    <div id="DS-4" class="step" data-x="-5500" data-y="-9000" data-rotate="180" data-scale="2">
         <h1>...or even simpler...:</h1>
 		<pre>
 public class MyComponent {
 
-    @MyConfig configuration;
+    private MyConfig configuration;
     
     @Activate
     protected void activate(final MyConfig config) {
@@ -208,7 +208,7 @@ public class MyComponent {
 		</pre>
     </div>
 
-    <div id="DS-5" class="step" data-x="5500" data-y="-7000" data-rotate="180" data-scale="6">
+    <div id="DS-5" class="step" data-x="-5500" data-y="-7000" data-rotate="180" data-scale="2">
         <h1>Declarative Services Enhancements (RFC 190)</h1>
         <ul>
              <li>⦿ Annotation configuration support</li>
@@ -218,7 +218,7 @@ public class MyComponent {
         </ul>
     </div>
 
-    <div id="HttpService" class="step" data-x="1500" data-y="-5000" data-rotate="180" data-scale="1">
+    <div id="HttpService" class="step" data-x="-5500" data-y="-5000" data-rotate="180" data-scale="1">
         <h1>Http Service Update (RFC 189)</h1>
         <ul>
             <li>⦿ Update to Servlet API 3+</li>
@@ -229,7 +229,7 @@ public class MyComponent {
         </ul>
     </div>
     
-    <div id="HttpService-2" class="step" data-x="3500" data-y="-5000" data-rotate="180" data-scale="1">
+    <div id="HttpService-2" class="step" data-x="-5500" data-y="-3000" data-rotate="180" data-scale="1">
         <h1>Whiteboard Servlet Registration</h1>
         <pre>
 @Component(service = javax.servlet.Servlet.class, scope="PROTOTYPE",
@@ -241,7 +241,7 @@ public class MyServlet extends HttpServlet {
 }        </pre>
     </div>
 
-    <div id="HttpService-3" class="step" data-x="3500" data-y="-7000" data-rotate="180" data-scale="1">
+    <div id="HttpService-3" class="step" data-x="-5500" data-y="-1000" data-rotate="180" data-scale="1">
         <h1>Whiteboard Servlet Filter Registration</h1>
         <pre>
 @Component(service = javax.servlet.Filter.class, scope="PROTOTYPE",
@@ -253,7 +253,7 @@ public class MyFilter implements Filter {
 }        </pre>
     </div>
 
-    <div id="HttpService-4" class="step" data-x="3500" data-y="-9000" data-rotate="180" data-scale="1">
+    <div id="HttpService-4" class="step" data-x="-8500" data-y="-1000" data-rotate="180" data-scale="1">
         <h1>Additional Support</h1>
         <ul>
             <li>⦿ Most listener types are supported</li>

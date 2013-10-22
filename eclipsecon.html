@@ -117,17 +117,6 @@ public interface ServiceObjects&lt;S&gt; {
         </pre>
     </div>
 
-    <div id="FW-Annotations" class="step" data-x="3000" data-y="-9000" data-rotate="180">
-        <h1>RFC 197 – OSGi Type and Package Annotations</h1>
-        <ul>
-			<li>⦿ Annotations for documenting semantic versioning information</li>
-			<ul><li>⦿ Class retention annotations</li></ul>
-			<li>⦿ @Version</li>
-			<li>⦿ @ProviderType</li>
-			<li>⦿ @ConsumerType</li>
-		</ul>
-    </div>
-
     <div id="FW-DTO" class="step" data-x="3000" data-y="-11000" data-rotate="270">
         <h1 class="pre">RFC 185 – Data Transfer Objects</h1>
         <ul>
@@ -170,6 +159,82 @@ public class BundleDTO extends org.osgi.dto.DTO {
 			<li class="pre">⦿ CapabilityDTO, RequirementDTO, ResourceDTO</li>
 			<li class="pre">⦿ WiringDTO, WireDTO</li>
 		</ul>
+    </div>
+
+    <div id="cdi" class="step" data-x="5500" data-y="0" data-scale="1">
+        <p><b class="positioning">OSGi/CDI integration</b></p>
+    </div>
+    
+    <div id="rfc193" class="step" data-x="7500" data-y="0" data-scale="2">
+        <h1>RFC 193 - CDI Support</h1>
+        <p>Bridging OSGi and standard JavaEE dependency model</p>
+        <ul>
+            <li>● Publishing CDI beans as OSGi services</li>
+            <li>● Injecting OSGi services in CDI beans</li>
+            <ul>
+                <li>CDI = Contexts and dependency injection</li>
+            </ul>
+        </ul>
+    </div>
+
+    <div id="rfc193-2" class="step" data-x="9500" data-y="0" data-scale="2">
+        <h1>RFC 193 - Examples</h1>
+        <ul>
+            <li>● Publishing CDI bean as OSGi service</li>
+        </ul>
+        <pre class="prettyprint">@Component
+public class MyComponent implements MyInterface { ... }</pre><br/>
+        <ul>
+            <li>● Dependency Injection</li>
+        </ul>
+        <pre class="prettyprint">@Inject
+private MyInterface beanA;
+
+@Inject
+@Service
+private MyInterface serviceB;
+
+@Inject
+@Service(optional = true)
+private MyInterface serviceC;</pre>
+    </div>
+
+    <div id="repo" class="step" data-x="7500" data-y="2500" data-rotate="45" data-scale="1">
+        <p><b class="positioning">Repository 1.1</b></p>
+    </div>
+
+    <div id="repo1" class="step" data-x="9500" data-y="4500" data-rotate="45" data-scale="2">
+        <figure>
+            <img src="repo1.png"/>
+            <figcaption>OSGi Repository today</figcaption>
+        </figure>
+    </div>
+
+    <div id="repo2" class="step" data-x="11500" data-y="6500" data-rotate="45" data-scale="2">
+        <figure>
+            <img src="repo2.png"/>
+            <figcaption>Example Repository namespaces</figcaption>
+        </figure>
+    </div>
+
+    <div id="rfc187" class="step" data-x="13500" data-y="8500" data-rotate="45" data-scale="2">
+        <h1>RFC 187 - Repository 1.1</h1>
+        <p>Existing repository powerful</p>
+        <p>&nbsp;&nbsp;&nbsp;but: <small><em>limited to queries in a single namespace</em></small></p><br/>
+        <p>New in RFC 187:</p>
+        <ul>
+            <li>Combine requirements spanning multiple namespaces:</li>
+        </ul>
+        <pre class="prettyprint">Repository repo = ... // Obtain from Service Registry
+  Collection&lt;Resource&gt; res = repo.findProviders(
+    repo.getExpressionCombiner().and(
+      repo.newRequirementBuilder("osgi.wiring.package").
+        addDirective("filter","(osgi.wiring.package=foo.pkg1)").
+          buildExpression(),
+      repo.newRequirementBuilder("osgi.identity").
+        addDirective("filter",
+          "(license=http://opensource.org/licenses/Apache-2.0)").
+          buildExpression()));</pre>
     </div>
 
     <div id="DS-1" class="step" data-x="-5500" data-y="-15000" data-rotate="180">
@@ -464,82 +529,6 @@ public class MyFilter implements Filter {
         <p style="padding-left: 40px;"><em>... and you deal with your cloud nodes through OSGi services</em></p>
     </div>
 
-    <div id="cdi" class="step" data-x="5500" data-y="0" data-scale="1">
-        <p><b class="positioning">OSGi/CDI integration</b></p>
-    </div>
-    
-    <div id="rfc193" class="step" data-x="7500" data-y="0" data-scale="2">
-        <h1>RFC 193 - CDI Support</h1>
-        <p>Bridging OSGi and standard JavaEE dependency model</p>
-        <ul>
-            <li>● Publishing CDI beans as OSGi services</li>
-            <li>● Injecting OSGi services in CDI beans</li>
-            <ul>
-                <li>CDI = Contexts and dependency injection</li>
-            </ul>
-        </ul>
-    </div>
-
-    <div id="rfc193-2" class="step" data-x="9500" data-y="0" data-scale="2">
-        <h1>RFC 193 - Examples</h1>
-        <ul>
-            <li>● Publishing CDI bean as OSGi service</li>
-        </ul>
-        <pre class="prettyprint">@Component
-public class MyComponent implements MyInterface { ... }</pre><br/>
-        <ul>
-            <li>● Dependency Injection</li>
-        </ul>
-        <pre class="prettyprint">@Inject
-private MyInterface beanA;
-
-@Inject
-@Service
-private MyInterface serviceB;
-
-@Inject
-@Service(optional = true)
-private MyInterface serviceC;</pre>
-    </div>
-
-    <div id="repo" class="step" data-x="7500" data-y="2500" data-rotate="45" data-scale="1">
-        <p><b class="positioning">Repository 1.1</b></p>
-    </div>
-
-    <div id="repo1" class="step" data-x="9500" data-y="4500" data-rotate="45" data-scale="2">
-        <figure>
-            <img src="repo1.png"/>
-            <figcaption>OSGi Repository today</figcaption>
-        </figure>
-    </div>
-
-    <div id="repo2" class="step" data-x="11500" data-y="6500" data-rotate="45" data-scale="2">
-        <figure>
-            <img src="repo2.png"/>
-            <figcaption>Example Repository namespaces</figcaption>
-        </figure>
-    </div>
-
-    <div id="rfc187" class="step" data-x="13500" data-y="8500" data-rotate="45" data-scale="2">
-        <h1>RFC 187 - Repository 1.1</h1>
-        <p>Existing repository powerful</p>
-        <p>&nbsp;&nbsp;&nbsp;but: <small><em>limited to queries in a single namespace</em></small></p><br/>
-        <p>New in RFC 187:</p>
-        <ul>
-            <li>Combine requirements spanning multiple namespaces:</li>
-        </ul>
-        <pre class="prettyprint">Repository repo = ... // Obtain from Service Registry
-  Collection&lt;Resource&gt; res = repo.findProviders(
-    repo.getExpressionCombiner().and(
-      repo.newRequirementBuilder("osgi.wiring.package").
-        addDirective("filter","(osgi.wiring.package=foo.pkg1)").
-          buildExpression(),
-      repo.newRequirementBuilder("osgi.identity").
-        addDirective("filter",
-          "(license=http://opensource.org/licenses/Apache-2.0)").
-          buildExpression()));</pre>
-    </div>
-
     <div id="rfc180" class="step" data-x="9500" data-y="8500" data-rotate="45" data-scale="1">
         <p><b class="positioning">Portable Java Contracts</b></p>
     </div>
@@ -593,6 +582,17 @@ private MyInterface serviceC;</pre>
 Require-Capability: osgi.contract;
   filter:="(&(osgi.contract=JavaServlet)(version=3.0))"</pre>
         <p><br/>Allows writing <em>portable</em> bundles that import non-semantically versioned packages.</p>
+    </div>
+
+    <div id="FW-Annotations" class="step" data-x="3000" data-y="-9000" data-rotate="180">
+        <h1>RFC 197 – OSGi Type and Package Annotations</h1>
+        <ul>
+			<li>⦿ Annotations for documenting semantic versioning information</li>
+			<ul><li>⦿ Class retention annotations</li></ul>
+			<li>⦿ @Version</li>
+			<li>⦿ @ProviderType</li>
+			<li>⦿ @ConsumerType</li>
+		</ul>
     </div>
 
     <div id="ent" class="step" data-x="1500" data-y="5700" data-scale="1">

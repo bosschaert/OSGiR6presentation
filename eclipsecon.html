@@ -85,8 +85,9 @@
     <div id="FW-Scopes-2" class="step" data-x="3000" data-y="-5000" data-rotate="180">
         <h1>PrototypeServiceFactory</h1>
         <br/>
-        <pre>
-public interface PrototypeServiceFactory&lt;S&gt; extends ServiceFactory&lt;S&gt; {
+        <pre class="prettyprint">
+public interface PrototypeServiceFactory&lt;S&gt; 
+       extends ServiceFactory&lt;S&gt; {
 
     S getService(Bundle bundle, 
                  ServiceRegistration&lt;S> registration);
@@ -100,14 +101,15 @@ public interface PrototypeServiceFactory&lt;S&gt; extends ServiceFactory&lt;S&gt
 
     <div id="FW-Scopes-3" class="step" data-x="3000" data-y="-7000" data-rotate="180">
         <h1 class="pre">New method in BundleContext:</h1>
-        <pre>
+        <pre class="prettyprint">
 public interface BundleContext {
 
-    &lt;S> ServiceObjects&lt;S&gt; getServiceObjects(ServiceReference&lt;S&gt; ref);
+&lt;S> ServiceObjects&lt;S&gt; getServiceObjects(ServiceReference&lt;S&gt; ref);
+
 }  
         </pre>
         <h1 class="pre">New Interface ServiceObjects:</h1>
-        <pre>
+        <pre class="prettyprint">
 public interface ServiceObjects&lt;S&gt; {
 
     S getService();
@@ -132,7 +134,7 @@ public interface ServiceObjects&lt;S&gt; {
         <ul>
 			<li>Getting DTOs: adapter pattern</li>
 		</ul>
-		<pre>
+		<pre class="prettyprint">
 public class BundleDTO extends org.osgi.dto.DTO {
 
     public long id;
@@ -250,7 +252,7 @@ private MyInterface serviceC;</pre>
 
     <div id="DS-2" class="step" data-x="-5500" data-y="-13000" data-rotate="180">
         <h1>Use annotations for configuration...</h1>
-		<pre>
+		<pre class="prettyprint">
 @interface MyConfig {
     boolean enabled() default true;
     String[] topic() default {"topicA", "topicB"};
@@ -262,7 +264,7 @@ private MyInterface serviceC;</pre>
 
     <div id="DS-3" class="step" data-x="-5500" data-y="-11000" data-rotate="180">
         <h1>...and reference them in lifecycle methods</h1>
-		<pre>
+		<pre class="prettyprint">
 @Component
 public class MyComponent {
 
@@ -283,7 +285,7 @@ public class MyComponent {
 
     <div id="DS-4" class="step" data-x="-5500" data-y="-9000" data-rotate="180">
         <h1>...or even simpler...</h1>
-		<pre>
+		<pre class="prettyprint">
 @Component
 public class MyComponent {
 
@@ -333,8 +335,9 @@ public class MyComponent {
     
     <div id="HttpService-2" class="step" data-x="-5500" data-y="-1000" data-rotate="90">
         <h1 class="pre">Whiteboard Servlet Registration</h1>
-        <pre>
-@Component(service = javax.servlet.Servlet.class, scope="PROTOTYPE",
+        <pre class="prettyprint">
+@Component(service = javax.servlet.Servlet.class, 
+   scope="PROTOTYPE",
    property={
      "osgi.http.whiteboard.servlet.pattern=/products/*",
    })
@@ -345,8 +348,9 @@ public class MyServlet extends HttpServlet {
 
     <div id="HttpService-3" class="step" data-x="-8500" data-y="1000" data-rotate="90">
         <h1>Whiteboard Servlet Filter Registration</h1>
-        <pre>
-@Component(service = javax.servlet.Filter.class, scope="PROTOTYPE",
+        <pre class="prettyprint">
+@Component(service = javax.servlet.Filter.class, 
+   scope="PROTOTYPE",
    property={
      "osgi.http.whiteboard.filter.pattern=/products/*",
    })

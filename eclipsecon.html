@@ -38,14 +38,16 @@
         <span class="footnote">David Bosschaert</span>
     </div>
 
-    <div id="speakers" class="step" data-x="0" data-y="-1500" data-rotate="180" data-scale="2">
+    <div id="speakers" class="step" data-x="0" data-y="-2000" data-rotate="180" data-scale="2">
         <h1>Speakers</h1>
-        <h2 class="pre"><b>David Bosschaert</b></h2>
+        <br/>
+        <h2 class="pre"><b>David Bosschaert (david@redhat.com)</b></h2>
         <ul>
-            <li>⦿ One</li>
-            <li>⦿ Two</li>
-            <li>⦿ Three</li>
+            <li>⦿ JBoss/Fuse at Red Hat</li>
+            <li>⦿ Co-chair OSGi EEG</li>
+            <li>⦿ Open-source and cloud enthusiast</li>
         </ul>
+        <br/>
         <h2 class="pre"><b>Carsten Ziegeler (cziegeler@apache.org)</b></h2>
         <ul>
             <li>⦿ RnD Adobe Research Switzerland</li>
@@ -58,11 +60,13 @@
         <h1>Agenda</h1>
         <ul>
             <li>⦿ Framework updates</li>
+            <li>⦿ OSGi/CDI integration</li>
+            <li>⦿ Repository update</li>
             <li>⦿ Declarative Services</li>
             <li>⦿ Http Service</li>
             <li>⦿ Cloud</li>
-            <li>⦿ OSGi/CDI integration</li>
-            <li>⦿ Repository update</li>
+            <li>⦿ Portable Java Contracts</li>
+            <li>⦿ Semantic Versioning Annotations</li>
             <li>⦿ Other spec updates</li>
         </ul>
     </div>
@@ -316,7 +320,7 @@ public class MyFilter implements Filter {
     </div>
 
     <div id="OSGi-cloud" class="step" data-x="5500" data-y="6500" data-rotate="90" data-scale="2">
-        <h1>An OSGi cloud system...</h1>
+        <h1>An OSGi cloud ecosystem...</h1>
         <ul>
             <li>⦿ Many frameworks</li>
             <ul>
@@ -327,6 +331,7 @@ public class MyFilter implements Filter {
             <ul>
                 <li>&nbsp;&nbsp;&nbsp;&nbsp;○ rather a collection of different nodes</li>
                 <li>&nbsp;&nbsp;&nbsp;&nbsp;○ with different roles working together</li>
+                <li>&nbsp;&nbsp;&nbsp;&nbsp;○ some may be replicas</li>
             </ul>
             <li>⦿ Load varies over time</li>
             <li>⦿ ... and so does your cloud system</li>
@@ -334,6 +339,7 @@ public class MyFilter implements Filter {
                 <li>&nbsp;&nbsp;&nbsp;&nbsp;○ topology</li>
                 <li>&nbsp;&nbsp;&nbsp;&nbsp;○ configuration</li>
                 <li>&nbsp;&nbsp;&nbsp;&nbsp;○ number of nodes</li>
+                <li>&nbsp;&nbsp;&nbsp;&nbsp;○ depending on the demand</li>
             </ul>
         </ul>
     </div>
@@ -608,7 +614,6 @@ Require-Capability: osgi.contract;
             <li>▻ Subsystems 1.1</li>
             <ul>
                 <li>・ Provide Deployment Manifest separately</li>
-                <li>・ Config Admin integration</li>
                 <li>・ Many small enhancements</li>
             </ul>
         </ul>

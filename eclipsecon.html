@@ -51,7 +51,7 @@
         <h2 class="pre"><b>Carsten Ziegeler (cziegeler@apache.org)</b></h2>
         <ul>
             <li>⦿ RnD Adobe Research Switzerland</li>
-            <li>⦿ OSGi CPEG and EEG</li>
+            <li>⦿ OSGi CPEG and EEG Member</li>
             <li>⦿ ASF member</li>
         </ul>
     </div>
@@ -119,13 +119,17 @@ public interface ServiceObjects&lt;S&gt; {
         </pre>
     </div>
 
+    <div id="intro-dto" class="step" data-x="1000" data-y="-11000">
+        <p><b class="positioning">Data Transfer Objects</b></p>
+    </div>
+
     <div id="FW-DTO" class="step" data-x="3000" data-y="-11000" data-rotate="270">
         <h1 class="pre">RFC 185 – Data Transfer Objects</h1>
         <ul>
 			<li>⦿ Defines a DTO model for OSGi</li>
 			<ul><li>⦿ Serializable/Deserializable objects</li></ul>
-			<li>⦿ To be adopted by other specs</li>
 			<li>⦿ Use cases: REST, JMX, Web Console...</li>
+			<li>⦿ To be adopted by other specs</li>
 		</ul>
     </div>
 
@@ -159,7 +163,7 @@ public class BundleDTO extends org.osgi.dto.DTO {
 			<li class="pre">⦿ ServiceReferenceDTO</li>
 			<li class="pre">⦿ BundleStartLevelDTO, FrameworkStartLevelDTO</li>
 			<li class="pre">⦿ CapabilityDTO, RequirementDTO, ResourceDTO</li>
-			<li class="pre">⦿ WiringDTO, WireDTO</li>
+			<li class="pre">⦿ BundleWiringsDTO, etc</li>
 		</ul>
     </div>
 
@@ -309,6 +313,18 @@ public class MyComponent {
              <li>⦿ Name mapping (_ -> .)</li>
              <li>⦿ Type mapping for configurations</li>
         </ul>
+    </div>
+
+    <div id="DS-6" class="step" data-x="-5500" data-y="-5800" data-rotate="180">
+        <h1>Mapping</h1>
+		<pre class="prettyprint">
+@interface MyConfig {
+    boolean enabled() default true;
+    String[] topic() default {"topicA", "topicB"};
+    String userName();
+    int service_ranking() default 15;
+}
+		</pre>
     </div>
 
     <div id="DS-FINAL" class="step" data-x="-5500" data-y="-5000" data-rotate="180">

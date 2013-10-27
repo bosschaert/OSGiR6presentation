@@ -263,6 +263,31 @@ small {
     font-size: 32px;
 }
 
+#intro-dto { width: 500px }
+
+#intro-dto b {
+    display: block;
+    font-size: 150px;
+    line-height: 150px;
+    -webkit-transition: 1.5s;
+    -moz-transition:    1.5s;
+    -ms-transition:     1.5s;
+    -o-transition:      1.5s;
+    transition:         1.5s;
+}
+
+/*
+    ... and we want 'positioning` word to move up a bit when the step gets
+    `present` class ...
+*/
+#intro-dto.present .positioning {
+    -webkit-transform: translate(20px, -20px);
+    -moz-transform:    translate(20px, -20px);
+    -ms-transform:     translate(20px, -20px);
+    -o-transform:      translate(20px, -20px);
+    transform:         translate(20px, -20px);
+}
+
 #Cloud { width: 500px }
 
 #Cloud b {

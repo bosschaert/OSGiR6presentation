@@ -60,12 +60,11 @@
         <h1>Agenda</h1>
         <ul>
             <li>⦿ Framework updates</li>
-            <li>⦿ OSGi/CDI integration</li>
             <li>⦿ Repository update</li>
+            <li>⦿ OSGi/CDI integration</li>
             <li>⦿ Declarative Services</li>
-            <li>⦿ Http Service</li>
             <li>⦿ Cloud</li>
-            <li>⦿ Portable Java Contracts</li>
+            <li>⦿ Http Service</li>
             <li>⦿ Semantic Versioning Annotations</li>
             <li>⦿ Other spec updates</li>
         </ul>
@@ -119,89 +118,6 @@ public interface ServiceObjects&lt;S&gt; {
         </pre>
     </div>
 
-    <div id="intro-dto" class="step" data-x="1000" data-y="-11000">
-        <p><b class="positioning">Data Transfer Objects</b></p>
-    </div>
-
-    <div id="FW-DTO" class="step" data-x="3000" data-y="-11000" data-rotate="270">
-        <h1 class="pre">RFC 185 – Data Transfer Objects</h1>
-        <ul>
-			<li>⦿ Defines a DTO model for OSGi</li>
-			<ul><li>⦿ Serializable/Deserializable objects</li></ul>
-			<li>⦿ Use cases: REST, JMX, Web Console...</li>
-			<li>⦿ To be adopted by other specs</li>
-		</ul>
-    </div>
-
-    <div id="FW-DTO-2" class="step" data-x="3000" data-y="-13000" data-rotate="270">
-        <h1 class="pre">RFC 185 – Data Transfer Objects</h1>
-        <ul>
-			<li>Getting DTOs: adapter pattern</li>
-		</ul>
-		<pre class="prettyprint">
-public class BundleDTO extends org.osgi.dto.DTO {
-
-    public long id;
-    
-    public long lastModified;
-    
-    public int state;
-    
-    public String symbolicName;
-    
-    public String version;
-}
-		</pre>
-    </div>
-
-    <div id="FW-DTO-3" class="step" data-x="3000" data-y="-15000" data-rotate="270">
-        <h1 class="pre">RFC 185 – Data Transfer Objects</h1>
-        <ul>
-			<li class="pre">DTOs for the OSGi framework</li>
-			<li class="pre">⦿ FrameworkDTO</li>
-			<li class="pre">⦿ BundleDTO</li>
-			<li class="pre">⦿ ServiceReferenceDTO</li>
-			<li class="pre">⦿ BundleStartLevelDTO, FrameworkStartLevelDTO</li>
-			<li class="pre">⦿ CapabilityDTO, RequirementDTO, ResourceDTO</li>
-			<li class="pre">⦿ BundleWiringsDTO, etc</li>
-		</ul>
-    </div>
-
-    <div id="cdi" class="step" data-x="5500" data-y="0" data-scale="1">
-        <p><b class="positioning">OSGi/CDI integration</b></p>
-    </div>
-    
-    <div id="rfc193" class="step" data-x="7500" data-y="0" data-scale="2">
-        <h1>RFC 193 - CDI Support</h1>
-        <p>Bridging OSGi and standard JavaEE dependency model</p>
-        <ul>
-            <li>● Publishing CDI beans as OSGi services</li>
-            <li>● Injecting OSGi services in CDI beans</li>
-            <ul>
-                <li>CDI = Contexts and dependency injection</li>
-            </ul>
-        </ul>
-    </div>
-
-    <div id="rfc193-2" class="step" data-x="9500" data-y="0" data-scale="2">
-        <h1>RFC 193 - Examples</h1>
-        <ul>
-            <li>● Publishing CDI bean as OSGi service</li>
-        </ul>
-        <pre class="prettyprint">@Component
-public class MyComponent implements MyInterface { ... }</pre><br/>
-        <ul>
-            <li>● Dependency Injection</li>
-        </ul>
-        <pre class="prettyprint">@Inject
-@Service
-private MyInterface serviceA;
-
-@Inject
-@Service(optional = true)
-private MyInterface serviceB;</pre>
-    </div>
-
     <div id="repo" class="step" data-x="7500" data-y="2500" data-rotate="45" data-scale="1">
         <p><b class="positioning">Repository 1.1</b></p>
     </div>
@@ -238,6 +154,43 @@ private MyInterface serviceB;</pre>
         addDirective("filter",
           "(license=http://opensource.org/licenses/Apache-2.0)").
           buildExpression()));</pre>
+    </div>
+
+    <div id="cdi" class="step" data-x="5500" data-y="0" data-scale="1">
+        <p><b class="positioning">OSGi/CDI integration</b></p>
+    </div>
+    
+    <div id="rfc193" class="step" data-x="7500" data-y="0" data-scale="2">
+        <h1>RFC 193 - CDI Support</h1>
+        <p>Bridging OSGi and standard JavaEE dependency model</p>
+        <ul>
+            <li>● Publishing CDI beans as OSGi services</li>
+            <li>● Injecting OSGi services in CDI beans</li>
+            <ul>
+                <li>CDI = Contexts and dependency injection</li>
+            </ul>
+        </ul>
+    </div>
+
+    <div id="rfc193-2" class="step" data-x="9500" data-y="0" data-scale="2">
+        <h1>RFC 193 - Examples</h1>
+        <ul>
+            <li>● Publishing CDI bean as OSGi service</li>
+        </ul>
+        <pre class="prettyprint">import org.osgi.service.cdi.Component;
+
+@Component
+public class MyComponent implements MyInterface { ... }</pre><br/>
+        <ul>
+            <li>● Dependency Injection</li>
+        </ul>
+        <pre class="prettyprint">@Inject
+@Service
+private MyInterface serviceA;
+
+@Inject
+@Service(optional = true)
+private MyInterface serviceB;</pre>
     </div>
 
     <div id="DS-0" class="step" data-x="-5500" data-y="-17000" data-rotate="180">
@@ -279,6 +232,7 @@ public class MyComponent {
     
     @Activate
     protected void activate(final MyConfig config) {
+         // note: annotation MyConfig used as interface
          if ( config.enabled() ) {
              this.userName = config.userName();      
              this.topics = config.topic();
@@ -298,6 +252,7 @@ public class MyComponent {
     
     @Activate
     protected void activate(final MyConfig config) {
+         // note: annotation MyConfig used as interface
          if ( config.enabled() ) {
             this.configuration = config;      
          }
@@ -316,15 +271,23 @@ public class MyComponent {
     </div>
 
     <div id="DS-6" class="step" data-x="-5500" data-y="-5800" data-rotate="180">
-        <h1>Mapping</h1>
+        <h1>Additional Metatype Support (RFC 208)</h1>
 		<pre class="prettyprint">
+@ObjectClassDefinition(label="My Component",
+                  description="Coolest component in the world.")
 @interface MyConfig {
+    @AttributeDefinition(label="Enabled", 
+           description="Topic and user name are used if enabled")
     boolean enabled() default true;
+
+    @AttributeDefinition(...)
     String[] topic() default {"topicA", "topicB"};
+
+    @AttributeDefinition(...)
     String userName();
-    int service_ranking() default 15;
-}
-		</pre>
+
+    int service_ranking() default 15; // maps to service.ranking
+}</pre>
     </div>
 
     <div id="DS-FINAL" class="step" data-x="-5500" data-y="-5000" data-rotate="180">
@@ -333,8 +296,7 @@ public class MyComponent {
         <ul>
              <li>⦿ Annotation configuration support</li>
              <li>⦿ Support of service scopes</li>
-             <li>⦿ Diagnostic API</li>
-             <li>⦿ DTOs</li>
+             <li>⦿ Introspection API</li>
         </ul>
     </div>
 
@@ -347,10 +309,8 @@ public class MyComponent {
         <h1>Update</h1>
         <ul>
             <li>⦿ Update to Servlet API 3+</li>
-            <li>⦿ Whiteboard support for</li>
-            <li>  Servlets, Servlet Filters</li>
-            <li>  Listeners, Resources and HttpContexts</li>
-            <li>⦿ and DTOs</li>
+            <li>⦿ Whiteboard support</li>
+            <li>⦿ and Introspection API</li>
         </ul>
     </div>
     
@@ -554,11 +514,11 @@ public class MyFilter implements Filter {
         <p style="padding-left: 40px;"><em>... and you deal with your cloud nodes through OSGi services</em></p>
     </div>
 
-    <div id="rfc180" class="step" data-x="9500" data-y="8500" data-rotate="45" data-scale="1">
-        <p><b class="positioning">Portable Java Contracts</b></p>
+    <div id="FW-Annotations-0" class="step" data-x="5000" data-y="-9000" data-rotate="180">
+        <p><b class="positioning">Type and Package Annotations</b></p>
     </div>
-
-    <div id="rfc180-2" class="step" data-x="11500" data-y="10500" data-rotate="45" data-scale="2">
+    
+    <div id="rfc180-2" class="step" data-x="3000" data-y="-9000" data-rotate="180" data-scale="2">
         <h1>Semantic Versioning...</h1>
         <p>... is a versioning policy for <b><em>exported packages</em></b>.</p>
         <p>OSGi versions: <small>&lt;major&gt;.&lt;minor&gt;.&lt;micro&gt;.&lt;qualifier&gt;</small></p>
@@ -574,45 +534,6 @@ public class MyFilter implements Filter {
         <p><b>Note:</b> not always used for <em>bundle</em> versions</p>
     </div>
 
-    <div id="rfc180-3" class="step" data-x="13500" data-y="12500" data-rotate="45" data-scale="2">
-        <p>Semantic Versioning is great, but...</p>
-        <br/>
-        <ul>
-            <li>- not all projects use it, e.g. APIs from JSRs</li>
-            <li>- e.g. Servlet 3 is backward compatible with 2.5</li>
-            <li>- what's its <code>javax.servlet</code> package version?</li>
-            <ul>
-                <li><code>2.6</code> ?</li>
-                <li>or <code>3.0</code> ?</li>
-            </ul>
-            <li>- different projects made different choices</li>
-        </ul>
-    </div>
-
-    <div id="rfc180-4" class="step" data-x="15500" data-y="14500" data-rotate="45" data-scale="2">
-        <h1>RFC 180: Portable Java Contracts</h1>
-        <br/>
-        <p><code>osgi.contract</code> capability to the rescue</p>
-        <ul>
-            <li>● client bundle requires capability</li>
-            <ul><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with 'marketing' or 'spec' version</li>
-            </ul>
-            <li>● and also imports the package <em>without</em> version</li>
-            <ul>
-                <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>osgi.contract</code> provider binds the contract version to package versions
-            </ul>
-        </ul>
-        <br/>
-        <pre class='prettyprint'>Import-Package: javax.servlet, javax.servlet.http
-Require-Capability: osgi.contract;
-  filter:="(&(osgi.contract=JavaServlet)(version=3.0))"</pre>
-        <p><br/>Allows writing <em>portable</em> bundles that import non-semantically versioned packages.</p>
-    </div>
-
-    <div id="FW-Annotations-0" class="step" data-x="3000" data-y="-9000" data-rotate="180">
-        <p><b class="positioning">Type and Package Annotations</b></p>
-    </div>
-    
     <div id="FW-Annotations" class="step" data-x="1000" data-y="-9000" data-rotate="180">
         <h1>RFC 197 – OSGi Type and Package Annotations</h1>
         <ul>
@@ -630,6 +551,8 @@ Require-Capability: osgi.contract;
 
     <div id="ent-2" class="step" data-x="1500" data-y="7700" data-scale="2">
         <ul>
+            <li>▻ Asynchronous Services</li>
+            <li>▻ Promises API</li>
             <li>▻ Blueprint 1.1</li>
             <ul>
                 <li>・ Non-damped service references</li>
@@ -645,19 +568,13 @@ Require-Capability: osgi.contract;
                 <li>・ Provide Deployment Manifest separately</li>
                 <li>・ Many small enhancements</li>
             </ul>
+            <li>▻ DTOs</li>
         </ul>
     </div>
 
     <div id="when" class="step" data-x="-3000" data-y="0" data-scale="1">
         <h1>When can I get it?</h1>
         <p>RFCs available to everyone today: <a href="https://github.com/osgi/design">https://github.com/osgi/design</a></p>
-        <br/>
-        <ul><small>
-            <li>◎ Most work aimed at Core/Enterprise R6 (2014)</li>
-            <li>◎ Some specs in Enterprise R7 (2015)</li>
-            </small>
-        </ul>
-
     </div>
 
     <div id="questions" class="step" data-x="-1500" data-y="4500" data-rotate="270" data-z="-3000">

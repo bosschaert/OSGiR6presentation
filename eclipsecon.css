@@ -357,9 +357,9 @@ small {
     font-size: 250%;
 }
 
-#cdi { width: 900px }
+#rfc206 { width: 900px }
 
-#cdi b {
+#rfc206 b {
     display: block;
     font-size: 150px;
     line-height: 150px;
@@ -374,7 +374,7 @@ small {
     ... and we want 'positioning` word to move up a bit when the step gets
     `present` class ...
 */
-#cdi.present .positioning {
+#rfc206.present .positioning {
     -webkit-transform: translate(20px, -20px);
     -moz-transform:    translate(20px, -20px);
     -ms-transform:     translate(20px, -20px);

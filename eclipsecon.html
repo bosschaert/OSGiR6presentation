@@ -61,7 +61,7 @@
         <ul>
             <li>⦿ Framework updates</li>
             <li>⦿ Repository update</li>
-            <li>⦿ OSGi/CDI integration</li>
+            <li>⦿ Asynchronous Services</li>
             <li>⦿ Declarative Services</li>
             <li>⦿ Http Service</li>
             <li>⦿ Cloud</li>
@@ -218,43 +218,78 @@ public class BundleDTO extends org.osgi.dto.DTO {
           buildExpression()));</pre>
     </div>
 
-    <div id="cdi" class="step" data-x="5500" data-y="0" data-scale="1">
-        <p><b class="positioning">OSGi/CDI integration</b></p>
+    <div id="rfc206" class="step" data-x="5500" data-y="0" data-scale="1">
+        <p><b class="positioning">Asynchronous Services<br/>&nbsp;&nbsp;&nbsp;&nbsp;&amp;<br/>Promises</b></p>
     </div>
     
-    <div id="rfc193" class="step" data-x="7500" data-y="0" data-scale="2">
-        <h1>RFC 193 - CDI Support</h1>
-        <p>Bridging OSGi and standard JavaEE dependency model</p>
+    <div id="rfc206-2" class="step" data-x="7500" data-y="0" data-scale="2">
+        <h1>Async Services</h1>
         <ul>
-            <li>● Publishing CDI beans as OSGi services</li>
-            <li>● Injecting OSGi services in CDI beans</li>
+            <li>● Asynchronously invoke services</li>
             <ul>
-                <li>CDI = Contexts and dependency injection</li>
+                <li>existing service</li>
+                <li>new ones, written for async access</li>
+            </ul>
+            <li>● Client invokes the service via a <em>mediator</em></li>
+            <li>● Invocation returns quickly</li>
+            <ul>
+                <li>result can be obtained later</li>                
             </ul>
         </ul>
     </div>
 
-    <div id="rfc193-2" class="step" data-x="9500" data-y="0" data-scale="2">
-        <h1>RFC 193 - Examples</h1>
-        <ul>
-            <li>● Publishing CDI bean as OSGi service</li>
-        </ul>
-        <pre class="prettyprint">import org.osgi.service.cdi.Component;
+    <div id="rfc206-3" class="step" data-x="9500" data-y="0" data-scale="2">
+        <h1>Async Services - example</h1>
+        <pre class="prettyprint">CalcService mySvc = ...  // from service registry
+Async asyncService = ... // from service registry
+CalcService myMediator = asyncService.mediate(mySvc);
+final Promise&lt;BigDecimal&gt; p = asyncService.call(
+                          myMediator.factorial(1000000));
 
-@Component
-public class MyComponent implements MyInterface { ... }</pre><br/>
-        <ul>
-            <li>● Dependency Injection</li>
-        </ul>
-        <pre class="prettyprint">@Inject
-@Service
-private MyInterface serviceA;
+// ... factorial invoked asynchronously ... 
 
-@Inject
-@Service(optional = true)
-private MyInterface serviceB;</pre>
+// callback to handle the result when it arrives
+p.onResolve(new Runnable() {
+  public void run() {
+    System.out.println("Found the answer: " + p.getValue());
+  }
+}</pre>
+    </div>
+    
+    <div id="rfc206-4" class="step" data-x="11500" data-y="0" data-scale="2">
+        <h1>OSGi Promises</h1>
+        <ul>
+            <li>● Inspired by JavaScript Promises</li>
+            <li>● Provide async chaining mechanism</li>
+            <ul>
+                <li>Based on callbacks</li>                
+            </ul>
+            <li>● Designed to work with Java 8<li>
+            <ul>
+                </li>CompletableFuture and Lambdas</li>                    
+            </ul>
+            <li>● Used with Async Services</li>
+            <ul>
+                <li>Also useful elsewhere</li>
+            </ul>
+        </ul>
     </div>
 
+    <div id="rfc206-5" class="step" data-x="13500" data-y="0" data-scale="2">
+        <h1>OSGi Promises - example</h1>
+        <pre class="prettyprint">
+Success&lt;String,String&gt; validateResult = new Success&lt;&gt; {
+  public Promise&lt;String&gt; call(Promise&lt;String&gt; p) {
+    return Promises.resolved(
+      p.trim().toLowerCase().startsWith("&lt;?xml"));
+  }
+}
+Promise&lt;String&gt; p = asyncRemoteMethod();
+p.then(validateResult)
+  .then(transformResult)
+    .then(showResult, showError);</pre>
+    </div>
+    
     <div id="DS-0" class="step" data-x="-5500" data-y="-17000" data-rotate="180">
         <p><b class="positioning">Declarative Services</b></p>
     </div>

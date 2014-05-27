@@ -61,7 +61,7 @@
         <ul>
             <li>⦿ Framework updates</li>
             <li>⦿ Repository update</li>
-            <li>⦿ Asynchronous Services</li>
+            <li>⦿ Asynchronous Services &amp; Promises</li>
             <li>⦿ Declarative Services</li>
             <li>⦿ Http Service</li>
             <li>⦿ Cloud</li>
@@ -253,7 +253,7 @@ p.onResolve(new Runnable() {
   public void run() {
     System.out.println("Found the answer: " + p.getValue());
   }
-}</pre>
+});</pre>
     </div>
     
     <div id="rfc206-4" class="step" data-x="11500" data-y="0" data-scale="2">
@@ -279,10 +279,9 @@ p.onResolve(new Runnable() {
     <div id="rfc206-5" class="step" data-x="13500" data-y="0" data-scale="2">
         <h1>OSGi Promises - example</h1>
         <pre class="prettyprint">
-Success&lt;String,String&gt; validateResult = new Success&lt;&gt; {
+Success&lt;String,String&gt; transformResult = new Success&lt;&gt; {
   public Promise&lt;String&gt; call(Promise&lt;String&gt; p) {
-    return Promises.resolved(
-      p.trim().toLowerCase().startsWith("&lt;?xml"));
+    return Promises.resolved(toHTML(p.getValue()));
   }
 }
 Promise&lt;String&gt; p = asyncRemoteMethod();
@@ -673,15 +672,7 @@ public class MyFilter implements Filter {
     </div>
 
     <div id="ent-2" class="step" data-x="1500" data-y="7700" data-scale="2">
-        <ul>
-            <li>▻ Asynchronous Services</li>
-            <li>▻ Promises API</li>
-            <li>▻ Blueprint 1.1</li>
-            <ul>
-                <li>・ Non-damped service references</li>
-                <li>・ Grace period enhancements</li>
-                <li>・ Many small fixes</li>
-            </ul>
+        <ul>            
             <li>▻ Remote Service Admin 1.1</li>
             <ul>
                 <li>・ Remote Service registration modification</li>
@@ -691,6 +682,7 @@ public class MyFilter implements Filter {
                 <li>・ Provide Deployment Manifest separately</li>
                 <li>・ Many small enhancements</li>
             </ul>
+            <li>▻ Metatype Service updates</li>
             <li>▻ Portable Java SE/EE Contracts</li>
         </ul>
     </div>

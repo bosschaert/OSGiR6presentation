@@ -260,10 +260,14 @@ p.onResolve(new Runnable() {
         <h1>OSGi Promises</h1>
         <ul>
             <li>● Inspired by JavaScript Promises</li>
+            <ul>
+                <li>Make latency and errors explicit</li>
+            </ul>
             <li>● Provide async chaining mechanism</li>
             <ul>
                 <li>Based on callbacks</li>                
             </ul>
+            <li>● Promises are Monads</li>
             <li>● Works with many (older) Java versions</li>
             <li>● Designed to work with Java 8<li>
             <ul>
@@ -279,7 +283,7 @@ p.onResolve(new Runnable() {
     <div id="rfc206-5" class="step" data-x="13500" data-y="0" data-scale="2">
         <h1>OSGi Promises - example</h1>
         <pre class="prettyprint">
-Success&lt;String,String&gt; transformResult = new Success&lt;&gt; {
+Success&lt;String,String&gt; transformResult = new Success&lt;&gt;() {
   public Promise&lt;String&gt; call(Promise&lt;String&gt; p) {
     return Promises.resolved(toHTML(p.getValue()));
   }

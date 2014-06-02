@@ -87,49 +87,48 @@
     <div id="FW-Scopes" class="step" data-x="3000" data-y="-3000" data-rotate="180">
         <h1>Framework&nbsp;Updates</h1>
         <h1>Service&nbsp;Scopes&nbsp;(RFC&nbsp;195)</h1>
+        <p>OSGi R5 supports two service scopes:</p>
         <ul>
-          <li class="pre">⦿ Service Scopes: singleton, bundle, <b>prototype</b></li>
-          <li class="pre">⦿ Driver: Support for EEG specs (EJB, CDI)</li>
-          <li class="pre">⦿ Usage in other spec updates</li>
-          <li class="pre">⦿ New PrototypeServiceFactory</li>
+          <li>⦿ Singleton</li>
+          <li >⦿ Bundle (ServiceFactory)</li>
         </ul>
-    </div>
-
-    <div id="FW-Scopes-2" class="step" data-x="3000" data-y="-5000" data-rotate="180">
-        <h1>PrototypeServiceFactory</h1>
-        <br/>
+        <p >Transparent to the client</p>
         <pre class="prettyprint">
-public interface PrototypeServiceFactory&lt;S&gt; 
-       extends ServiceFactory&lt;S&gt; {
-
-    S getService(Bundle bundle, 
-                 ServiceRegistration&lt;S> registration);
-
-    void ungetService(Bundle bundle, 
-                      ServiceRegistration&lt;S&gt; registration, 
-                      S service);
-}
+S getService(ServiceReference&lt;S&gt; ref)
+void ungetService(ServiceReference&lt;S&gt; ref)
         </pre>
     </div>
 
-    <div id="FW-Scopes-3" class="step" data-x="3000" data-y="-7000" data-rotate="180">
-        <h1 class="pre">New method in BundleContext:</h1>
+    <div id="FW-Scopes-2" class="step" data-x="3000" data-y="-4500" data-rotate="180">
+        <h1>Framework&nbsp;Updates</h1>
+        <h1>Service&nbsp;Scopes&nbsp;(RFC&nbsp;195)</h1>
+        <ul>
+          <li>⦿ Third Scope: <b>prototype</b></li>
+          <li>⦿ Driver: Support for EEG specs (EJB, CDI)</li>
+          <li>⦿ Usage in other spec updates</li>
+        </ul>
+        <p>Clients need to use new API / mechanisms</p>
+    </div>
+
+    <div id="FW-Scopes-3" class="step" data-x="3000" data-y="-6000" data-rotate="180">
+        <h1>Framework&nbsp;Updates</h1>
+        <h1>Service&nbsp;Scopes&nbsp;(RFC&nbsp;195)</h1>
+        <p >New BundleContext Methods API</p>
         <pre class="prettyprint">
-public interface BundleContext {
-
-&lt;S> ServiceObjects&lt;S&gt; getServiceObjects(ServiceReference&lt;S&gt; ref);
-
-}  
+S getServiceObjects(ServiceReference&lt;S&gt; ref).getService()
+void getServiceObjects(ServiceReference&lt;S&gt; ref).ungetService(S)
         </pre>
-        <h1 class="pre">New Interface ServiceObjects:</h1>
-        <pre class="prettyprint">
-public interface ServiceObjects&lt;S&gt; {
+        <p>Transparent to the client</p>
+    </div>
 
-    S getService();
-    
-    void ungetService(S service);
-} 
-        </pre>
+    <div id="FW-Scopes-4" class="step" data-x="3000" data-y="-7500" data-rotate="180">
+        <h1>Framework&nbsp;Updates</h1>
+        <h1>Service&nbsp;Scopes&nbsp;(RFC&nbsp;195)</h1>
+        <ul>
+           <li>⦿ New <b>PrototypeServiceFactory</b> interface</li>
+           <li>⦿ Managed service registration properties for inspection</li>
+           <li>⦿ Support in component frameworks (DS, Blueprint)</li>
+        </ul>
     </div>
 
    <div id="intro-dto" class="step" data-x="1000" data-y="-11000">

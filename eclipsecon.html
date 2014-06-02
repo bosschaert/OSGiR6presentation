@@ -297,42 +297,56 @@ p.then(validateResult)
         <p><b class="positioning">Declarative Services</b></p>
     </div>
     
-    <div id="DS-1" class="step" data-x="-5500" data-y="-15000" data-rotate="180">
+    <div id="DS-1" class="step" data-x="-5500" data-y="-15600" data-rotate="180">
         <h1 class="pre">RFC 190 - Declarative Services</h1>
         <h1>Enhancements</h1>
         <ul>
-             <li>⦿ Support of service scopes</li>
-             <li>⦿ Diagnostic API</li>
+             <li>⦿ Support of prototype scope</li>
+             <li>⦿ Introspection API</li>
              <li>⦿ DTOs</li>
              <li>⦿ But most importantly...</li>
         </ul>
     </div>
-    <div id="DS-1a" class="step" data-x="-5500" data-y="-13000" data-rotate="180" data-scale=".1">
-        <h1>Simple component dvlpmnt!</h1>
+    <div id="DS-1a" class="step" data-x="-5500" data-y="-14200" data-rotate="180" data-scale=".1">
+        <h1 class="pre">Simplify Component Dvlpmnt</h1>
     <pre class="prettyprint">
-@Component
-@Property(name="service.ranking", intValue=15)
+@Component(property={
+        MyComponent.PROP_ENABLED + ":Boolean=" + MyComponent.DEFAULT_ENABLED,
+        MyComponent.PROP_TOPIC + "=" + MyComponent.DEFAULT_TOPIC_1,
+        MyComponent.PROP_TOPIC + "=" + MyComponent.DEFAULT_TOPIC_1,
+        "service.ranking:Integer=15"
+})
 public class MyComponent {
-    private static final boolean DEFAULT_ENABLED = true;
-    @Property(boolValue=DEFAULT_ENABLED)
-    private static final String PROP_ENABLED = "enabled";
-    @Property(value = {"topicA", "topicB"})
-    private static final String PROP_TOPIC = "enabled";
-    @Property
-    private static final String PROP_USERNAME = "userName";
 
-    String userName;
-    String[] topics;
+    static final String PROP_ENABLED = "enabled";
+    static final String PROP_TOPIC = "enabled";
+    static final String PROP_USERNAME = "userName";
 
-    @Activate
-    protected void activate(final Map<String, Object> config) {
-         final boolean enabled = PropertiesUtil.toBoolean(config.get(PROP_ENABLED),
-                                    DEFAULT_ENABLED);
-         if ( enabled ) {
-             this.userName = PropertiesUtil.toString(config.get(PROP_USERNAME), null);
-             this.topics = PropertiesUtil.toStringArray(config.get(PROP_TOPIC));
+    static final boolean DEFAULT_ENABLED = true;
+    static final String DEFAULT_TOPIC_1 = "topicA";
+    static final String DEFAULT_TOPIC_2 = "topicB";
     </pre>
     </div>
+
+    <div id="DS-1b" class="step" data-x="-5500" data-y="-13000" data-rotate="180" data-scale=".1">
+        <h1 class="pre">Simplify Component Dvlpmnt</h1>
+    <pre class="prettyprint">
+    @Activate
+    protected void activate(final Map<String, Object> config) {
+         final boolean enabled = 
+            PropertiesUtil.toBoolean(config.get(PROP_ENABLED),
+                                    DEFAULT_ENABLED);
+         if ( enabled ) {
+             this.userName = 
+                 PropertiesUtil.toString(config.get(PROP_USERNAME), null);
+             this.topics = 
+                 PropertiesUtil.toStringArray(config.get(PROP_TOPIC),
+                   new String[] {DEFAULT_TOPIC_1, DEFAULT_TOPIC_2});
+         }
+    }
+    </pre>
+    </div>
+
     <div id="DS-2" class="step" data-x="-5500" data-y="-10600" data-rotate="180">
         <h1>Use annotations for configuration...</h1>
 		<pre class="prettyprint">
@@ -391,7 +405,7 @@ public class MyComponent {
         <ul>
              <li>⦿ Fields registered as component properties</li>
              <li>⦿ Name mapping (_ -> .)</li>
-             <li>⦿ Type mapping for configurations</li>
+             <li>⦿ Type conversion for configurations</li>
         </ul>
     </div>
 
@@ -420,8 +434,9 @@ public class MyComponent {
         <h1>Enhancements</h1>
         <ul>
              <li>⦿ Annotation configuration support</li>
-             <li>⦿ Support of service scopes</li>
+             <li>⦿ Support of prototype scope</li>
              <li>⦿ Introspection API</li>
+             <li>⦿ DTOs</li>
         </ul>
     </div>
 
@@ -430,11 +445,11 @@ public class MyComponent {
     </div>
 
     <div id="HttpService" class="step" data-x="-5500" data-y="-1000" data-rotate="90">
-        <h1 class="pre">RFC 189 - Http Service</h1>
-        <h1>Update</h1>
+        <h1 class="pre">Http Whiteboard Service</h1>
+        <h1 class="pre">RFC 189</h1>
         <ul>
-            <li>⦿ Update to Servlet API 3+</li>
             <li>⦿ Whiteboard support</li>
+            <li>⦿ Servlet API 3+ Support</li>
             <li>⦿ and Introspection API</li>
         </ul>
     </div>

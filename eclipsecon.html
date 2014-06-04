@@ -239,10 +239,16 @@ public class BundleDTO extends org.osgi.dto.DTO {
 
     <div id="rfc206-3" class="step" data-x="9500" data-y="0" data-scale="2">
         <h1>Async Services - example</h1>
+        <small>
+            <p><em>A typical service:</em></p>
+        <pre class="prettyprint">public interface CalcService {
+  BigInteger factorial(int num);
+}</pre>
+            <p><em>Invoke it asynchronously:</em></p>
         <pre class="prettyprint">CalcService mySvc = ...  // from service registry
 Async asyncService = ... // from service registry
 CalcService myMediator = asyncService.mediate(mySvc);
-final Promise&lt;BigDecimal&gt; p = asyncService.call(
+final Promise&lt;BigInteger&gt; p = asyncService.call(
                           myMediator.factorial(1000000));
 
 // ... factorial invoked asynchronously ... 
@@ -252,7 +258,7 @@ p.onResolve(new Runnable() {
   public void run() {
     System.out.println("Found the answer: " + p.getValue());
   }
-});</pre>
+});</pre></small>
     </div>
     
     <div id="rfc206-4" class="step" data-x="11500" data-y="0" data-scale="2">
@@ -700,7 +706,6 @@ public class MyFilter implements Filter {
                 <li>・ Provide Deployment Manifest separately</li>
                 <li>・ Many small enhancements</li>
             </ul>
-            <li>▻ Metatype Service updates</li>
             <li>▻ Portable Java SE/EE Contracts</li>
         </ul>
     </div>
